@@ -42,6 +42,22 @@ gh release create corpus-YYYYMMDD transfer_dist/* \
 Release archives contain data only. Credentials, local virtual environments,
 Python caches, and macOS metadata are excluded.
 
+## Project memory for AI agents
+
+`knowledge/` is an [OKF](https://github.com/okf-memory/okf-agent-memory) bundle
+in which AI agents record decisions, constraints, and non-obvious findings about
+this project. Agents read and write it only with the `okf` CLI, which
+[Pixi](https://pixi.sh) installs:
+
+```sh
+pixi install
+pixi run okf search "<keywords>"
+```
+
+The `okf-memory` skill in `.agents/skills/` tells agents when and how to use it,
+and `.claude/skills` links there so Claude Code finds it. The skill is adapted
+from [uw-ssec/project-template](https://github.com/uw-ssec/project-template).
+
 ## License
 
 RCA Atlas software and original documentation are proprietary and all rights
