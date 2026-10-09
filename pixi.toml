@@ -1,0 +1,7 @@
+[workspace]
+channels = ["https://prefix.dev/conda-forge"]
+name = "rca-atlas"
+platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
+
+[dependencies]
+okf-agent-memory = ">=0.6.0,<0.7"
