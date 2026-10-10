@@ -1,0 +1,8 @@
+# Requirements
+* [Corpus releases need a clean network audit](release-audit-gate.md) - A corpus release passes only when audit_sensitive_network_info.py reports zero sensitive findings; no script enforces this gate.
+* [No private network details leave the Nereus adapter](nereus-network-redaction.md) - Private network fields and private addresses are redacted from Nereus live results, caches, snapshots and the corpus, and no MCP switch overrides this.
+* [Staged QARTOD output never syncs to the live dashboard](staged-qartod-archive-prefix.md) - Plots made with staged (homebrew) QARTOD tables may sync only under an archive prefix, because a sync without one would overwrite the live dashboard's plots.
+* [Only the maintainers deploy the Worker](worker-deploys-by-maintainers.md) - Agents and contributors do not deploy the Cloudflare Worker; Derek and Maleen deploy it, and the map must keep working against the currently deployed Worker.
+* [Literature answers start from abstracts](literature-abstract-first.md) - Agents search the abstract corpus first and fetch full text only when a relevant abstract is insufficient, never bypassing paywalls, logins or access controls.
+* [Candidate graphs never write to the authoritative graph](candidate-graphs-need-review.md) - Machine-derived candidate graphs, from Microsoft GraphRAG or the literature full-text matcher, stay outside the authoritative PostgreSQL graph until evaluation, review and a separately approved merge.
+* [Model and Graph-RAG keys never reach the browser](llm-keys-server-side.md) - The Gemini key goes only to the Graph-RAG API container and the Worker's secrets, and no model or Graph-RAG key is ever exposed to a browser or the public Pages preview.
